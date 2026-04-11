@@ -27,7 +27,7 @@ function showScreen(name) {
   });
   
   if (header) {
-    if (name === 'result') {
+    if (name === 'result' || name === 'test') {
       header.classList.add('hidden');
     } else {
       header.classList.remove('hidden');
