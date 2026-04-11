@@ -19,10 +19,21 @@ const progressText = document.getElementById('progressText');
 const submitBtn = document.getElementById('submitBtn');
 const testHint = document.getElementById('testHint');
 
+const header = document.querySelector('.header');
+
 function showScreen(name) {
   Object.entries(screens).forEach(([key, el]) => {
     el.classList.toggle('active', key === name);
   });
+  
+  if (header) {
+    if (name === 'result') {
+      header.classList.add('hidden');
+    } else {
+      header.classList.remove('hidden');
+    }
+  }
+  
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
