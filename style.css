@@ -1075,7 +1075,17 @@ button:disabled {
 .result-actions {
   margin-top: 24px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+}
+
+.result-actions .action-buttons {
+  width: 100%;
+  justify-content: center;
+}
+
+.result-actions .btn-primary,
+.result-actions .btn-secondary {
+  min-width: 170px;
 }
 
 .analysis-box p {
@@ -1204,11 +1214,12 @@ button:disabled {
 
 .result-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 24px;
+  padding-inline: 14px;
 }
 
 @media (max-width: 860px) {
@@ -1237,6 +1248,18 @@ button:disabled {
   .btn-secondary {
     min-width: 100%;
     padding: 14px 20px;
+  }
+
+  .result-actions .action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 420px);
+  }
+
+  .result-actions .btn-primary,
+  .result-actions .btn-secondary {
+    min-width: 0;
+    width: 100%;
   }
   
   .header-content { flex-direction: column; }
