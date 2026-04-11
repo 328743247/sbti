@@ -7,7 +7,10 @@ const app = {
 const screens = {
   intro: document.getElementById('intro'),
   test: document.getElementById('test'),
-  result: document.getElementById('result')
+  result: document.getElementById('result'),
+  about: document.getElementById('about'),
+  dimensions: document.getElementById('dimensions'),
+  faq: document.getElementById('faq')
 };
 
 const questionList = document.getElementById('questionList');
@@ -266,3 +269,25 @@ document.getElementById('backIntroBtn').addEventListener('click', () => showScre
 document.getElementById('submitBtn').addEventListener('click', renderResult);
 document.getElementById('restartBtn').addEventListener('click', () => startTest(false));
 document.getElementById('toTopBtn').addEventListener('click', () => showScreen('intro'));
+
+const logo = document.getElementById('logo');
+if (logo) {
+  logo.addEventListener('click', () => {
+    showScreen('intro');
+    updateNavActive('#intro');
+  });
+}
+
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').substring(1);
+    showScreen(targetId);
+    updateNavActive(link.getAttribute('href'));
+  });
+});
+
+function updateNavActive(href) {
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.querySelector(`.nav-link[href="${href}"]`)?.classList.add('active');
+}
