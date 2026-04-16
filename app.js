@@ -291,10 +291,14 @@ if (logo) {
 
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', (e) => {
+    const href = link.getAttribute('href');
+    if (!href || !href.startsWith('#')) {
+      return;
+    }
     e.preventDefault();
-    const targetId = link.getAttribute('href').substring(1);
+    const targetId = href.substring(1);
     showScreen(targetId);
-    updateNavActive(link.getAttribute('href'));
+    updateNavActive(href);
   });
 });
 
